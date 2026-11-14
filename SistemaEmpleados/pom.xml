@@ -11,4 +11,11 @@
         <maven.compiler.target>21</maven.compiler.target>
         <exec.mainClass>com.sistemaempleados.SistemaEmpleados</exec.mainClass>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-sync</artifactId>
+            <version>5.2.1</version>
+        </dependency>
+    </dependencies>
 </project>
