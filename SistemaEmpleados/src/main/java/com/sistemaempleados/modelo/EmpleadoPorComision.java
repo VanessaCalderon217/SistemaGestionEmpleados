@@ -1,4 +1,7 @@
+
 package com.sistemaempleados.modelo;
+
+import java.time.LocalDate;
 
 public class EmpleadoPorComision extends Empleado {
 
@@ -7,15 +10,23 @@ public class EmpleadoPorComision extends Empleado {
     private double ventasTotales;
 
     // Constructor
-    public EmpleadoPorComision(String nombres, String apellidos,
-            double porcentajeComision, double ventasTotales) {
+    public EmpleadoPorComision(String codigo,
+            String nombres,
+            String apellidos,
+            String documento,
+            String cargo,
+            LocalDate fechaIngreso,
+            double porcentajeComision,
+            double ventasTotales) {
 
-        super(nombres, apellidos, "Por Comision");
+        super(codigo, nombres, apellidos, documento,
+                "Por Comision", cargo, fechaIngreso);
+
         this.porcentajeComision = porcentajeComision;
         this.ventasTotales = ventasTotales;
     }
 
-    // Obtener porcentaje de comision
+    // Consultar porcentaje de comision
     public double getPorcentajeComision() {
         return porcentajeComision;
     }
@@ -25,7 +36,7 @@ public class EmpleadoPorComision extends Empleado {
         this.porcentajeComision = porcentajeComision;
     }
 
-    // Obtener ventas totales
+    // Consultar ventas totales
     public double getVentasTotales() {
         return ventasTotales;
     }
@@ -35,7 +46,7 @@ public class EmpleadoPorComision extends Empleado {
         this.ventasTotales = ventasTotales;
     }
 
-    // Calcular salario por comision
+    // Calcular remuneracion
     @Override
     public double calcularSalario() {
         return ventasTotales * porcentajeComision / 100;
@@ -44,10 +55,18 @@ public class EmpleadoPorComision extends Empleado {
     // Mostrar informacion del empleado
     @Override
     public void mostrarInformacion() {
-        System.out.println("Tipo: Por Comision");
+
+        System.out.println("Codigo: " + getCodigo());
         System.out.println("Nombre: " + getNombreCompleto());
-        System.out.println("Porcentaje de comision: " + porcentajeComision + "%");
+        System.out.println("Documento: " + getDocumento());
+        System.out.println("Cargo: " + getCargo());
+        System.out.println("Tipo: " + getTipo());
+        System.out.println("Fecha de ingreso: " + getFechaIngreso());
+        System.out.println("Porcentaje de comision: "
+                + porcentajeComision + "%");
         System.out.println("Ventas totales: $" + ventasTotales);
         System.out.println("Remuneracion: $" + calcularSalario());
+        System.out.println("Estado: "
+                + (isActivo() ? "Activo" : "Inactivo"));
     }
 }

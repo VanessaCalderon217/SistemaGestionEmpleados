@@ -1,6 +1,8 @@
 
 package com.sistemaempleados.modelo;
 
+import java.time.LocalDate;
+
 public class EmpleadoPorHora extends Empleado {
 
     // Atributos propios del empleado por hora
@@ -8,15 +10,23 @@ public class EmpleadoPorHora extends Empleado {
     private int horasTrabajadas;
 
     // Constructor
-    public EmpleadoPorHora(String nombres, String apellidos,
-            double precioPorHora, int horasTrabajadas) {
+    public EmpleadoPorHora(String codigo,
+            String nombres,
+            String apellidos,
+            String documento,
+            String cargo,
+            LocalDate fechaIngreso,
+            double precioPorHora,
+            int horasTrabajadas) {
 
-        super(nombres, apellidos, "Por Hora");
+        super(codigo, nombres, apellidos, documento,
+                "Por Hora", cargo, fechaIngreso);
+
         this.precioPorHora = precioPorHora;
         this.horasTrabajadas = horasTrabajadas;
     }
 
-    // Obtener precio por hora
+    // Consultar precio por hora
     public double getPrecioPorHora() {
         return precioPorHora;
     }
@@ -26,7 +36,7 @@ public class EmpleadoPorHora extends Empleado {
         this.precioPorHora = precioPorHora;
     }
 
-    // Obtener horas trabajadas
+    // Consultar horas trabajadas
     public int getHorasTrabajadas() {
         return horasTrabajadas;
     }
@@ -36,7 +46,7 @@ public class EmpleadoPorHora extends Empleado {
         this.horasTrabajadas = horasTrabajadas;
     }
 
-    // Calcular salario por hora
+    // Calcular remuneracion
     @Override
     public double calcularSalario() {
         return precioPorHora * horasTrabajadas;
@@ -45,10 +55,17 @@ public class EmpleadoPorHora extends Empleado {
     // Mostrar informacion del empleado
     @Override
     public void mostrarInformacion() {
-        System.out.println("Tipo: Por Hora");
+
+        System.out.println("Codigo: " + getCodigo());
         System.out.println("Nombre: " + getNombreCompleto());
+        System.out.println("Documento: " + getDocumento());
+        System.out.println("Cargo: " + getCargo());
+        System.out.println("Tipo: " + getTipo());
+        System.out.println("Fecha de ingreso: " + getFechaIngreso());
         System.out.println("Precio por hora: $" + precioPorHora);
         System.out.println("Horas trabajadas: " + horasTrabajadas);
         System.out.println("Remuneracion: $" + calcularSalario());
+        System.out.println("Estado: " +
+                (isActivo() ? "Activo" : "Inactivo"));
     }
 }
