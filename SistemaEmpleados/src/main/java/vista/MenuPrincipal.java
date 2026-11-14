@@ -16,9 +16,12 @@ import java.awt.Font;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import com.sistemaempleados.GestorEmpleados;
+import com.sistemaempleados.GestorCalculos;
 public class MenuPrincipal extends JFrame {
 
     private JTabbedPane pestanas;
+    private PanelEmpleados panelEmpleados;
+    private PanelCalculos panelCalculos;
 
     // Constructor
     public MenuPrincipal() {
@@ -61,12 +64,33 @@ public class MenuPrincipal extends JFrame {
 
         // Pestanas
         pestanas = new JTabbedPane();
-        pestanas.addTab("Empleados", new PanelEmpleados(new GestorEmpleados()));
-        pestanas.addTab("Calculos", crearPanelVacio("Calculos"));
+        GestorEmpleados gestorEmpleados = new GestorEmpleados();
+        GestorCalculos gestorCalculos = new GestorCalculos();
+
+        panelEmpleados = new PanelEmpleados(gestorEmpleados);
+        panelCalculos = new PanelCalculos(gestorEmpleados, gestorCalculos);
+
+        pestanas.addTab("Empleados", panelEmpleados);
+        pestanas.addTab("Calculos", panelCalculos);
         pestanas.addTab("Reportes", crearPanelVacio("Reportes"));
         pestanas.addTab("Usuarios", crearPanelVacio("Usuarios"));
 
+        // Actualizar los datos al cambiar de pestana
+        pestanas.addChangeListener(e -> actualizarPestana());
+
         add(pestanas, BorderLayout.CENTER);
+    }
+
+    // Actualizar la pestana seleccionada
+    private void actualizarPestana() {
+
+        int indice = pestanas.getSelectedIndex();
+
+        if (indice == 0) {
+            panelEmpleados.actualizar();
+        } else if (indice == 1) {
+            panelCalculos.actualizar();
+        }
     }
 
     // Panel temporal hasta crear cada pantalla

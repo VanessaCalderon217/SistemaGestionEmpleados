@@ -72,6 +72,10 @@ public class RegistroCalculo {
     public LocalDate getFechaCalculo() {
         return fechaCalculo;
     }
+    
+    public void setFechaCalculo(LocalDate fechaCalculo) {
+        this.fechaCalculo = fechaCalculo;
+    }
 
     // Consultar valores utilizados
     public double getSalarioMensual() {

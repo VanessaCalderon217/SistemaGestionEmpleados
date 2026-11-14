@@ -6,6 +6,7 @@ import com.sistemaempleados.modelo.EmpleadoAdministrativo;
 import com.sistemaempleados.modelo.EmpleadoPorHora;
 import com.sistemaempleados.modelo.EmpleadoPorComision;
 import com.sistemaempleados.modelo.RegistroCalculo;
+import UsuarioDAO.CalculoDAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +16,13 @@ public class GestorCalculos {
     // Lista para guardar el historial de calculos
     private List<RegistroCalculo> historialCalculos;
 
+    // Acceso a la base de datos
+    private CalculoDAO calculoDAO;
+
     // Constructor
     public GestorCalculos() {
-        historialCalculos = new ArrayList<>();
+        calculoDAO = new CalculoDAO();
+        historialCalculos = calculoDAO.listarTodos();
     }
 
     // Calcular remuneracion de un empleado
@@ -83,6 +88,7 @@ public class GestorCalculos {
         );
 
         // Guardar el registro en el historial
+        calculoDAO.insertar(registro);
         historialCalculos.add(registro);
 
         return remuneracion;
