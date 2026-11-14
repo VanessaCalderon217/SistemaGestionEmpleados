@@ -60,4 +60,27 @@ public class GestorUsuarios {
     public boolean hayUsuarios() {
         return usuarioDAO.hayUsuarios();
     }
+    
+    // Iniciar sesion
+    public boolean iniciarSesion(String nombreUsuario, String clave) {
+
+        if (!ValidadorEmpleados.validarTexto(nombreUsuario)
+                || !ValidadorEmpleados.validarTexto(clave)) {
+            return false;
+        }
+
+        Usuario usuario = usuarioDAO.buscarPorUsuario(
+                nombreUsuario.trim().toLowerCase());
+
+        if (usuario == null || !usuario.isActivo()) {
+            return false;
+        }
+
+        if (!BCrypt.checkpw(clave, usuario.getPasswordHash())) {
+            return false;
+        }
+
+        Sesion.iniciar(usuario);
+        return true;
+    }
 }

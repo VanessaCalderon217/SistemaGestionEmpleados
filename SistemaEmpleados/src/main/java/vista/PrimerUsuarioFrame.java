@@ -112,6 +112,7 @@ public class PrimerUsuarioFrame extends JFrame {
                         "Usuario registrado. Ahora puede iniciar sesion.",
                         "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
                 dispose();
+                new LoginFrame().setVisible(true);
             } else {
                 mostrarAviso("No se pudo registrar el usuario.");
             }
@@ -128,9 +129,6 @@ public class PrimerUsuarioFrame extends JFrame {
                 "Validacion", JOptionPane.WARNING_MESSAGE);
     }
 
-    // Para probar la pantalla
-    public static void main(String[] args) {
-        new PrimerUsuarioFrame().setVisible(true);
-    }
+ 
 
 }
