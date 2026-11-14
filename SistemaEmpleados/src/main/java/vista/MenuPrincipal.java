@@ -22,6 +22,7 @@ public class MenuPrincipal extends JFrame {
     private JTabbedPane pestanas;
     private PanelEmpleados panelEmpleados;
     private PanelCalculos panelCalculos;
+    private PanelReportes panelReportes;
 
     // Constructor
     public MenuPrincipal() {
@@ -72,7 +73,8 @@ public class MenuPrincipal extends JFrame {
 
         pestanas.addTab("Empleados", panelEmpleados);
         pestanas.addTab("Calculos", panelCalculos);
-        pestanas.addTab("Reportes", crearPanelVacio("Reportes"));
+        panelReportes = new PanelReportes(gestorEmpleados, gestorCalculos);
+        pestanas.addTab("Reportes", panelReportes);
         pestanas.addTab("Usuarios", crearPanelVacio("Usuarios"));
 
         // Actualizar los datos al cambiar de pestana
@@ -90,6 +92,8 @@ public class MenuPrincipal extends JFrame {
             panelEmpleados.actualizar();
         } else if (indice == 1) {
             panelCalculos.actualizar();
+        } else if (indice == 2) {
+            panelReportes.actualizar();
         }
     }
 
