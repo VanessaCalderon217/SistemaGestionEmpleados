@@ -8,6 +8,9 @@ import com.mongodb.client.model.Filters;
 import com.sistemaempleados.conexionba.ConexionMongo;
 import com.sistemaempleados.modelo.Usuario;
 import org.bson.Document;
+
+import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author BryanAlfaro
@@ -50,4 +53,31 @@ public class UsuarioDAO {
     }
 
     
+    // Actualizar un usuario
+    public void actualizar(Usuario usuario) {
+
+        Document documento = new Document()
+                .append("usuario", usuario.getUsuario())
+                .append("nombre", usuario.getNombre())
+                .append("passwordHash", usuario.getPasswordHash())
+                .append("activo", usuario.isActivo());
+
+        coleccion.replaceOne(Filters.eq("usuario", usuario.getUsuario()), documento);
+    }
+
+    // Obtener todos los usuarios
+    public List<Usuario> listarTodos() {
+
+        List<Usuario> lista = new ArrayList<>();
+
+        for (Document documento : coleccion.find()) {
+            lista.add(new Usuario(
+                    documento.getString("usuario"),
+                    documento.getString("nombre"),
+                    documento.getString("passwordHash"),
+                    documento.getBoolean("activo", true)));
+        }
+
+        return lista;
+    }
 }

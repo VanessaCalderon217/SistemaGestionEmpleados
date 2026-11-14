@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import javax.swing.SwingConstants;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.WindowAdapter;
@@ -23,6 +22,7 @@ public class MenuPrincipal extends JFrame {
     private PanelEmpleados panelEmpleados;
     private PanelCalculos panelCalculos;
     private PanelReportes panelReportes;
+    private PanelUsuarios panelUsuarios;
 
     // Constructor
     public MenuPrincipal() {
@@ -75,7 +75,8 @@ public class MenuPrincipal extends JFrame {
         pestanas.addTab("Calculos", panelCalculos);
         panelReportes = new PanelReportes(gestorEmpleados, gestorCalculos);
         pestanas.addTab("Reportes", panelReportes);
-        pestanas.addTab("Usuarios", crearPanelVacio("Usuarios"));
+        panelUsuarios = new PanelUsuarios();
+        pestanas.addTab("Usuarios", panelUsuarios);
 
         // Actualizar los datos al cambiar de pestana
         pestanas.addChangeListener(e -> actualizarPestana());
@@ -94,16 +95,9 @@ public class MenuPrincipal extends JFrame {
             panelCalculos.actualizar();
         } else if (indice == 2) {
             panelReportes.actualizar();
+        } else if (indice == 3) {
+            panelUsuarios.actualizar();
         }
-    }
-
-    // Panel temporal hasta crear cada pantalla
-    private JPanel crearPanelVacio(String nombre) {
-
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.add(new JLabel("Modulo de " + nombre, SwingConstants.CENTER),
-                BorderLayout.CENTER);
-        return panel;
     }
 
     // Cerrar la sesion y regresar al login
