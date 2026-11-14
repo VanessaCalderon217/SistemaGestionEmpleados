@@ -4,7 +4,6 @@
  */
 package vista;
 import com.sistemaempleados.GestorUsuarios;
-import com.sistemaempleados.Sesion;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -103,8 +102,7 @@ public class LoginFrame extends JFrame {
         }
 
         if (accesoCorrecto) {
-            JOptionPane.showMessageDialog(this,
-                    "Bienvenido " + Sesion.getUsuarioActual().getNombre());
+            new MenuPrincipal().setVisible(true);
             dispose();
             return;
         }
