@@ -44,6 +44,10 @@ public class UsuarioDAO {
                 documento.getString("passwordHash"),
                 documento.getBoolean("activo", true));
     }
+    
+    public boolean hayUsuarios() {
+        return coleccion.countDocuments() > 0;
+    }
 
     
 }

@@ -56,5 +56,8 @@ public class GestorUsuarios {
         return BCrypt.hashpw(clave, BCrypt.gensalt(10));
     }
 
-    
+    // Saber si existe al menos un usuario
+    public boolean hayUsuarios() {
+        return usuarioDAO.hayUsuarios();
+    }
 }
