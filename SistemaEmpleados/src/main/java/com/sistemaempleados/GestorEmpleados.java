@@ -9,15 +9,20 @@ import com.sistemaempleados.modelo.EmpleadoPorComision;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import UsuarioDAO.EmpleadoDAO;
 
 public class GestorEmpleados {
 
     // Lista de empleados
     private List<Empleado> empleados;
+    
+    // Acceso a la base de datos
+    private EmpleadoDAO empleadoDAO;
 
     // Constructor
     public GestorEmpleados() {
-        empleados = new ArrayList<>();
+        empleadoDAO = new EmpleadoDAO();
+        empleados = empleadoDAO.listarTodos();
     }
 
     // Validar los datos de cada tipo de empleado
@@ -86,6 +91,7 @@ public class GestorEmpleados {
             return false;
         }
 
+        empleadoDAO.insertar(empleado);
         empleados.add(empleado);
         return true;
     }
@@ -178,6 +184,7 @@ public class GestorEmpleados {
         empleado.modificarDatos(nombres, apellidos,
                 documento, cargo, fechaIngreso);
 
+        empleadoDAO.actualizar(empleado);
         return true;
     }
 
@@ -200,6 +207,7 @@ public class GestorEmpleados {
                 (EmpleadoAdministrativo) empleado;
 
         administrativo.setSalarioMensual(salario);
+        empleadoDAO.actualizar(administrativo);
         return true;
     }
 
@@ -224,6 +232,7 @@ public class GestorEmpleados {
         empleadoHora.setPrecioPorHora(precio);
         empleadoHora.setHorasTrabajadas(horas);
 
+        empleadoDAO.actualizar(empleadoHora);
         return true;
     }
 
@@ -249,6 +258,7 @@ public class GestorEmpleados {
         empleadoComision.setPorcentajeComision(porcentaje);
         empleadoComision.setVentasTotales(ventas);
 
+        empleadoDAO.actualizar(empleadoComision);
         return true;
     }
 
@@ -262,6 +272,7 @@ public class GestorEmpleados {
         }
 
         empleado.inactivar();
+        empleadoDAO.actualizar(empleado);
         return true;
     }
 

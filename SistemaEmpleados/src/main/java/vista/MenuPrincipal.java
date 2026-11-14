@@ -15,7 +15,7 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
+import com.sistemaempleados.GestorEmpleados;
 public class MenuPrincipal extends JFrame {
 
     private JTabbedPane pestanas;
@@ -61,7 +61,7 @@ public class MenuPrincipal extends JFrame {
 
         // Pestanas
         pestanas = new JTabbedPane();
-        pestanas.addTab("Empleados", crearPanelVacio("Empleados"));
+        pestanas.addTab("Empleados", new PanelEmpleados(new GestorEmpleados()));
         pestanas.addTab("Calculos", crearPanelVacio("Calculos"));
         pestanas.addTab("Reportes", crearPanelVacio("Reportes"));
         pestanas.addTab("Usuarios", crearPanelVacio("Usuarios"));
