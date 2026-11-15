@@ -58,6 +58,18 @@ Los archivos editables originales (`.drawio`) se encuentran disponibles en este 
 ### 3. Diagrama de Clases UML
 ![Diagrama de Clases UML](DIAGRAMAS/Diagrana%20de%20Clases%20Sistema%20de%20Administracion%20de%20Empleados%202.drawio.png)
 
+## Funcionalidades y Reglas de Negocio
+- **Control de Acceso (Login):** Validación de credenciales mediante hash seguro (**BCrypt**) antes de habilitar los módulos del sistema.
+- **Gestión Integral de Empleados:** Registro, consulta, búsqueda por criterio, modificación e inactivación lógica (sin pérdida de historial) para modalidades *Administrativo*, *Por Hora* y *Por Comisión*.
+- **Cálculo Polimórfico de Remuneraciones:** Cálculo automático según el tipo de contratación (`calcularSalario()`), bloqueando cálculos a empleados inactivos y evitando duplicados por período.
+- **Historial y Reportes Consolidados:** Almacenamiento de cada cálculo realizado y generación de reportes generales, por modalidad y resúmenes totales de empleados activos.
+- **Gestión de Usuarios:** Administración de cuentas de acceso al sistema con activación e inactivación controlada.
+
+## Estructura del Repositorio
+- `SistemaEmpleados/`: Código fuente del proyecto en Java (JDK 21), formularios Swing y configuración Maven (`pom.xml`).
+- `DIAGRAMAS/`: Modelos de arquitectura y diseño en formato editable (`.drawio`) e imágenes (`.png`).
+- `crear_bd.bat` / `datos_prueba.bat` / `respaldo.bat`: Scripts automatizados para inicializar la base de datos `sistema_empleados` en MongoDB, cargar los registros de prueba y generar copias de respaldo.
+
 ## Integrantes del Equipo (GT 08 — GP 06)
 
 | Nombre Completo | Carné |
