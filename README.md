@@ -56,9 +56,7 @@ Los archivos editables originales (`.drawio`) se encuentran disponibles en este 
 ![Flujograma](DIAGRAMAS/Flujograma%20Sistema%20Empleados.png)
 
 ### 3. Diagrama de Clases UML
-![Diagrama de Clases UML](DIAGRAMAS/Diagrama%20de%20Clases%20Sistema%20de%20Administracion%20de%20Empleados.png)
-
-## Integrantes del Equipo (GT 08 — GP 06)
+![Diagrama de Clases UML](DIAGRAMAS/Diagrana%20de%20Clases%20Sistema%20de%20Administracion%20de%20Empleados%202.drawio.png)
 
 ## Integrantes del Equipo (GT 08 — GP 06)
 
