@@ -50,7 +50,7 @@ El sistema aplica separación de responsabilidades bajo el paradigma de Programa
 Los archivos editables originales (`.drawio`) se encuentran disponibles en este repositorio junto con sus exportaciones visuales:
 
 ### 1. Diagrama Jerárquico
-![Diagrama Jerárquico](DIAGRAMAS/Diagrama%20Jerarquico.png)
+![Diagrama Jerárquico](DIAGRAMAS/Diagrama%20Jerarquico.drawio.png)
 
 ### 2. Flujograma del Sistema
 ![Flujograma](DIAGRAMAS/Flujograma%20Sistema%20Empleados.png)
